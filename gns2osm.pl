@@ -147,7 +147,7 @@ print OSM_FILE "<?xml version='1.0' encoding='UTF-8'?>\n";
 print OSM_FILE "<osm version='0.6' generator='GNS_Converter'>\n";
 
 my $counter = 0;
-my $id = 0;
+my $id = -2000000000;
 open( TICKERS, '<'.$gns_file ) || die "Cannot open file $gns_file .. [$!]";
 while ($line = <TICKERS>) {
 
@@ -230,7 +230,7 @@ while ($line = <TICKERS>) {
         # NOT nt='.$name_type.' '
         # $adm2 not encountered
 
-        print OSM_FILE "<node id='".--$id."' action='modify' visible='true' lat='".$lat."' lon='".$lon."'>\n";
+        print OSM_FILE "<node id='".++$id."' action='modify' visible='true' lat='".$lat."' lon='".$lon."'>\n";
         foreach my $key (keys %osm_tags) {
             #"In case that the name contains a ' character, 
             #we use the " container for the tags
