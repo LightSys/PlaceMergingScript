@@ -1,0 +1,6 @@
+If you want to download the latest Openstreetmap data on populated places, you can type this command:
+./getOsm.sh
+
+This file depends on having the osmconvert64 file in the same directory. If it isn't there, you can download it from here http://m.m.i24.cc/osmconvert64
+getOsm.sh will take quite a while to run because it is running several difficult queries and downloading the results. If your curious how it works just open it in your favorite text editor.
+There is also a ./getOsmTest.sh which does the same thing, but only gets the data for Israel. It is nice to have around for testing since it runs quickly.
