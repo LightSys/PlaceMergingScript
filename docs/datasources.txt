@@ -1,0 +1,5 @@
+fetchAndCombinePopPlace.sh is pretty simple: for each datasource, it downloads the latest version using wget and converts it as necessary until it is in one unified .osm. At the end of the file, we use `osmconvert` to merge together the .osm's from each datasource.
+
+If you would like to add another datasource, you could add code in the place marked "Add other data sources here" to download from the datasource and convert it to .osm. Then modify the osmconvert call at the end so that it includes your new .osm.
+
+The OpenStreetMap community is large and active, and there are already many tools available for converting other mapping formats into .osm. Before writing your own parser or converter, check online to see if somebody's already done the work for you!
