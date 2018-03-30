@@ -1,0 +1,23 @@
+This project was supposed to be about merging, but we never actually got to that. We were planning to use some existing tools but those fell through too. This file details what we've learned.
+
+This kind of merging or deduping is called "conflation".
+
+Hootenanny (https://github.com/ngageoint/hootenanny)
+This is an open-source project that is in version 0.2 at the time of writing this.
+It comes with several command-line utilities for conflation, and they should be suitable for our purposes. The problem is that it's very difficult to install.
+Since it is so early in development, it will hopefully be much easier to install in the future.
+Alternatively, someone could find the conflation code in github and modify it to work for the purposes of this project.
+
+JCS (https://github.com/joshdoe/jcs)
+This also should be able to do what we want, but it has the opposite problem. It is quite old and no longer supported.
+It should be possible to build it and use it or look at the source code to learn their techniques.
+
+Osmose
+This is primarily for finding and manually fixing errors in the OSM database. It could be used as a starting point for this software, but the functionality we want isn't there.
+
+JOSM conflation plugin
+This uses JCS and has a purpose similar to Osmose. It is a visual tool for manual conflating.
+
+Others
+I highly reccomend you spend an hour or two poking around trying to find modern conflation tools. The OSM community is very large and active, and they have a long history of creating tools like this.
+
