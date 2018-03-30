@@ -1,0 +1,8 @@
+Intro
+=====
+This code is part of a project to create a unified list of all populated places in the world with names, locations, and populations, pulling from several data sources and merging them in order to create one complete list. Currently, this project only has a script for pulling the latest populated places data from OpenStreetMap and from NGA and combining them into one large .osm file, without doing any merging or deduplication. In the future, however, the script could also do these things:
+
+* Merge data from different sources, looking at lat/long coordinates and fuzzy string matching names to find which populated places are the same
+* Pull data from other sources in addition to OSM and NGA
+
+`running.txt` gives information on how to run the current script. `merging.txt` has ideas and guidelines for how to add merging capability in the future. `datasources.txt` has ideas and guidelines for how to add other data sources to the script.

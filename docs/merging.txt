@@ -1,23 +1,35 @@
 This project was supposed to be about merging, but we never actually got to that. We were planning to use some existing tools but those fell through too. This file details what we've learned.
 
-This kind of merging or deduping is called "conflation".
+Terminology
+===========
 
-Hootenanny (https://github.com/ngageoint/hootenanny)
-This is an open-source project that is in version 0.2 at the time of writing this.
-It comes with several command-line utilities for conflation, and they should be suitable for our purposes. The problem is that it's very difficult to install.
-Since it is so early in development, it will hopefully be much easier to install in the future.
-Alternatively, someone could find the conflation code in github and modify it to work for the purposes of this project.
+This kind of merging or deduping is called "conflation" - specifically conflation of nodes/points/points of interest. If you search a little bit, you should find many articles on conflation for geographic information systems (GIS) and related tools and plugins for mapping software.
 
-JCS (https://github.com/joshdoe/jcs)
-This also should be able to do what we want, but it has the opposite problem. It is quite old and no longer supported.
-It should be possible to build it and use it or look at the source code to learn their techniques.
+Some common file formats you may run across:
 
-Osmose
-This is primarily for finding and manually fixing errors in the OSM database. It could be used as a starting point for this software, but the functionality we want isn't there.
+* .osm: native OpenStreetMap format, basically XML
+* .osm.pbf: compressed OSM
+* .shp: "Shapefile" for ESRI GIS software
 
-JOSM conflation plugin
-This uses JCS and has a purpose similar to Osmose. It is a visual tool for manual conflating.
+Thoughts on tools for merging
+=============================
 
-Others
-I highly reccomend you spend an hour or two poking around trying to find modern conflation tools. The OSM community is very large and active, and they have a long history of creating tools like this.
+Many of the tools we came across were developed for OpenStreetMap, and they focus more on manual importing and checking of small data sets rather than mass merges of large data sets. However, there are still a few automated merge tools out there. Here's a list of some of the tools we came across and thoughts on how they could be useful.
 
+## Hootenanny (https://github.com/ngageoint/hootenanny)
+This is an open-source project that is in version 0.2 at the time of writing this. It comes with several command-line utilities for conflation which offer a few different algorithms and configuration options, so they should be suitable for our purposes. The problem is that it's very difficult to install. Since it is so early in development, it may be much easier to install in the future, or it may be possible to find the conflation code on their GitHub and rewrite it to use in this project.
+
+## JCS (https://github.com/joshdoe/jcs)
+This is a Java library for doing conflation that should be able to do what we want, but it has the opposite problem. It is quite old and no longer supported. It should be possible to build it and use it or look at the source code to learn their techniques, though it may require writing more manual merging.
+
+## Osmose (https://wiki.openstreetmap.org/wiki/Osmose)
+This is primarily for finding and manually fixing errors in the OSM database. It could be used as a starting point for this software, but the functionality we want isn't there. The code for the backend (https://github.com/osm-fr/osmose-backend) could possibly have some logic for finding matches, but we're not sure.
+
+## JOSM conflation plugin (https://wiki.openstreetmap.org/wiki/JOSM/Plugins/Conflation)
+This is a plugin for the JOSM OpenStreetMap tool. It uses JCS and has a purpose similar to Osmose - it's a visual tool for manual conflation and checking.
+
+## OSM Conflator (https://wiki.openstreetmap.org/wiki/OSM_Conflator)
+This is oriented towards merging small outside data sets in JSON format into OpenStreetMap. It doesn't produce an .osm but essentially an OSM diff. It may be possible to use this tool if you significantly change the existing data pulling/conversion code, but right now it wouldn't be very useful.
+
+## Others
+I highly reccomend you spend an hour or two poking around trying to find modern conflation tools. The OSM community is very large and active, and they have a long history of creating tools like this. Some more information here: https://wiki.openstreetmap.org/wiki/Conflation There are also several proprietary conflation tools and plugins for GIS software around that you may want to look into. Even if you do have to write your own merging tool eventually, you should be able to find some good examples of algorithms in these open source tools, as well as papers and articles to help you.

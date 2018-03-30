@@ -1,4 +1,7 @@
 #!/bin/bash
+
+## OPENSTREETMAP
+
 # Get the osm for populated places in the world
 # This could be done in one wget but seperate steps are nicer
 wget -O cities.osm 'http://overpass-api.de/api/interpreter?data=[timeout:3600];node[place="city"];out;'
@@ -12,6 +15,7 @@ chmod +x osmconvert64
 ./osmconvert64 cities.osm towns.osm villages.osm hamlets.osm isolated.osm -o=PopPlacesOsm.osm
 rm cities.osm towns.osm villages.osm hamlets.osm isolated.osm
 
+## NGA
 # pull latest version of NGA country data
 wget -r -l1 -A 'geonames_fc_*.zip' -nH --cut-dirs 3 'ftp://ftp.nga.mil/pub2/gns_data/' -O 'nga.zip'
 # unzip it
@@ -21,6 +25,8 @@ rm nga.zip
 perl gns2osm.pl
 # delete remaining NGA data
 rm *.txt
+
+## Add other data sources here...
 
 # Combine the two data sources (no deduping or merging)
 echo 'Merging into one file...'

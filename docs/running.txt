@@ -1,7 +1,17 @@
-If you want to download the latest Openstreetmap and NGA data and combine them into one .osm file, run the following command.
-./fetchAndCombinePopPlace.sh
+If you want to download the latest OpenStreetMap and NGA data and combine them into one .osm file, run the following command:
+`./fetchAndCombinePopPlace.sh`
 
-This file depends on having the osmconvert64 file in the same directory. If it isn't there, you can download it from here http://m.m.i24.cc/osmconvert64
-It also depends on the gns2osm.pl file, which we mostly got from another source but modified for this specific purpose.
-./fetchAndCombinePopPlace.sh will take quite a while to run because it is running several difficult queries and downloading the results. If your curious how it works just open it in your favorite text editor.
-.There is also a ./fetchAndCombinePopPlace.sh which does the same thing, but only gets the data for Israel. It is nice to have around for testing since it runs quickly.
+It will output a file called PopPlaces.osm. It has to be executable for you to run it (try `chmod +x fetchAndCombinePopPlace.sh` if you have issues with that).
+
+This file has two dependencies that should have been distributed with it. They should be in the same directory:
+* osmconvert64, which you can download from http://m.m.i24.cc/osmconvert64
+* gns2osm.pl, which is a modified version of an earlier gns2osm.pl (see the file for more info)
+
+It also uses these Linux tools:
+* wget
+* unzip
+* perl
+
+fetchAndCombinePopPlace.sh will take quite a while to run because it is running several difficult queries and downloading the results. If you would like to just run a test that will finish more quickly, there is also a ./fetchAndCombinePopPlaceTest.sh which does the same thing, but only gets data for Taiwan.
+
+If you're curious how either of them work, just open it in your favorite text editor. They are both simple bash scripts.
