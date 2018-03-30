@@ -8,5 +8,8 @@ wget -O hamlets.osm 'http://overpass-api.de/api/interpreter?data=[timeout:3600];
 wget -O isolated.osm 'http://overpass-api.de/api/interpreter?data=[timeout:3600];node[place="isolated_dewlling"][~"^is_in"~"Israel$"];out;'
 
 # Merge the resulting files into one
-osmconvert cities.osm towns.osm villages.osm hamlets.osm isolated.osm -o=Israel.osm
+chmod +x osmconvert64
+echo 'Merging into one file...'
+./osmconvert64 cities.osm towns.osm villages.osm hamlets.osm isolated.osm -o=Israel.osm
 rm cities.osm towns.osm villages.osm hamlets.osm isolated.osm
+echo 'Done'
